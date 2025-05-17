@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
     qmlRegisterType<DiagramManager>("com.example.diagram", 1, 0, "DiagramManager");
 
     QQmlApplicationEngine engine;
-    DiagramManager        diagramManager;
-    engine.rootContext()->setContextProperty("diagramManager", &diagramManager);
+    DiagramManager*        diagramManager = new DiagramManager(&engine);
+    engine.rootContext()->setContextProperty("diagramManager", diagramManager);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
         },
         Qt::QueuedConnection);
 
-    QObject::connect(&diagramManager, &DiagramManager::errorOccurred,
+    QObject::connect(diagramManager, &DiagramManager::errorOccurred,
                      [](const QString &message) { qDebug() << "Error:" << message; });
 
     engine.load(url);

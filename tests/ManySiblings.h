@@ -14,3 +14,7 @@ class DerivedClass9 : public BaseClass {};
 class DerivedClass10 : public BaseClass {};
 class DerivedClass11 : public BaseClass {};
 class DerivedClass12 : public BaseClass {};
+class DerivedClass13 : public BaseClass {};
+class DerivedClass14 : public BaseClass {};
+class DerivedClass15 : public BaseClass {};
+class DerivedClass16 : public BaseClass {};
